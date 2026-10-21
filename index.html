@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Mayorista Tocuyito | Guía Digital</title>
-<meta name="description" content="Mayorista Tocuyito - Venta de plátanos y víveres al mayor. Ecosistema Digital Inteligente.">
+<meta name="description" content="Directorio de negocios y servicios de Mayorista Tocuyito. Venta de plátanos y víveres al mayor.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -55,6 +55,9 @@
   @media (max-width: 768px) { .container { padding: 12px; } }
 
   .card { background: #112b4f; padding: 25px; border-radius: 20px; border-left: 5px solid #fbbf24; margin-bottom: 20px; }
+  .taller-card { background: #112b4f; border-radius: 20px; padding: 20px; margin-bottom: 20px; transition: 0.3s; border: 1px solid #1e3a5f; }
+  .taller-card:hover { transform: translateY(-5px); background: #1e3a5f; border-color: #fbbf24; }
+  
   .btn { padding: 10px 20px; border-radius: 30px; font-weight: bold; display: inline-block; font-size: 0.9rem; transition: 0.2s; text-align: center; text-decoration: none; cursor: pointer; border: none; }
   .btn-wsp { background: #25d366; color: white; }
   .btn-sitio { background: #3b82f6; color: white; }
@@ -103,6 +106,7 @@
   </div>
   <div class="menu-desktop">
     <a href="#inicio">INICIO</a>
+    <a href="#directorio">DIRECTORIO</a>
     <a href="#comedor">COMEDOR</a>
     <a href="#planes">PLANES</a>
     <a href="#ruleta">RULETA</a>
@@ -115,6 +119,7 @@
 
 <div id="mobile-menu">
   <a href="#inicio">INICIO</a>
+  <a href="#directorio">DIRECTORIO</a>
   <a href="#comedor">COMEDOR</a>
   <a href="#planes">PLANES</a>
   <a href="#ruleta">RULETA</a>
@@ -126,7 +131,6 @@
 <div class="container">
 
   <div id="inicio" class="text-center my-6">
-    <!-- Aquí va la portada que subiste -->
     <img src="portada-mayorista.jpg" id="portadaImg" alt="Mayorista Tocuyito" class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl" style="cursor:pointer" onerror="this.src='https://placehold.co/1200x400/0b1c3a/fbbf24?text=Mayorista+Tocuyito'">
     <div class="mt-4 text-[#fbbf24] text-lg md:text-xl font-semibold italic tracking-wide">
       CONEXIÓN TOTAL
@@ -139,10 +143,9 @@
     </div>
   </div>
 
-  <!-- TÍTULO PRINCIPAL MÁS PEQUEÑO -->
   <div class="text-center my-6 px-4">
     <h2 class="text-xl md:text-2xl font-bold italic text-white drop-shadow-lg">
-      Plátanos, Víveres y más al Mayor
+      Abastecimientro General al Mayor de insumos 
     </h2>
   </div>
 
@@ -150,16 +153,21 @@
     <a href="registro.html" class="btn btn-oro" style="padding: 18px 45px; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(251,191,36,0.4);">
       📝 CREAR MI TARJETA DIGITAL
     </a>
-    <p class="text-xs text-gray-400 mt-2">Presencia digital profesional desde $5.90 USD (25.000 COP / Bs.)</p>
+    <p class="text-xs text-gray-400 mt-2">Presencia digital profesional desde $5.90 USD (Bs. equivalente)</p>
   </div>
 
-  <!-- PULPITO: Si no tienes la imagen, sale el emoji. Si tienes la imagen, la puedes cambiar luego -->
-    <!-- PULPITO CON IMAGEN REAL -->
   <div class="text-center my-6" id="pulpitoContainer">
     <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" class="w-56 h-56 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float" onerror="this.style.display='none'">
-    
     <div id="mensajePulpito" class="mt-3 text-white text-lg md:text-xl font-semibold"></div>
     <p class="text-xs text-gray-400 mt-1">✨ Haz clic en el pulpito para saludar ✨</p>
+  </div>
+
+  <!-- DIRECTORIO DE NEGOCIOS -->
+  <div id="directorio" class="mb-8">
+    <h2 class="text-3xl font-bold text-[#fbbf24] mb-4 text-center">📋 DIRECTORIO DE NEGOCIOS</h2>
+    <div id="lista-negocios" class="grid md:grid-cols-2 gap-6">
+      <div class="text-center text-gray-400 col-span-2 py-8">Cargando negocios...</div>
+    </div>
   </div>
 
   <div id="comedor" class="card mb-6">
@@ -180,12 +188,11 @@
         <div class="text-4xl mb-2">🥉</div>
         <strong class="text-[#fbbf24] text-2xl block mb-1">Básico</strong>
         <span class="text-3xl font-bold text-white block my-3">$5.90 USD</span>
-        <p class="text-xs text-gray-400 mb-3">Pago único anual (~25.000 COP / Bs.)</p>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual</p>
         <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
           <li>✅ Tarjeta digital con QR</li>
           <li>✅ Link único</li>
           <li>✅ Presencia en la guía</li>
-          <li>🎟️ 1 ticket Ruleta</li>
         </ul>
         <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
       </div>
@@ -193,12 +200,10 @@
         <div class="text-4xl mb-2">🥈</div>
         <strong class="text-[#fbbf24] text-2xl block mb-1">Pro</strong>
         <span class="text-3xl font-bold text-white block my-3">$15 USD</span>
-        <p class="text-xs text-gray-400 mb-3">Pago único anual (Bs. equivalente)</p>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual</p>
         <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
           <li>✅ Todo lo del Básico</li>
           <li>✅ Carrusel 3D (3 fotos)</li>
-          <li>✅ Diseño personalizado</li>
-          <li>🎟️ 2 tickets Ruleta</li>
         </ul>
         <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
       </div>
@@ -206,12 +211,10 @@
         <div class="text-4xl mb-2">🥇</div>
         <strong class="text-[#fbbf24] text-2xl block mb-1">Avanzado</strong>
         <span class="text-3xl font-bold text-white block my-3">$30 USD</span>
-        <p class="text-xs text-gray-400 mb-3">Pago único anual (Bs. equivalente)</p>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual</p>
         <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
           <li>✅ Todo lo del Pro</li>
           <li>✅ Carrusel 3D (6 fotos)</li>
-          <li>✅ Prioridad alta</li>
-          <li>🎟️ 3 tickets Ruleta</li>
         </ul>
         <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
       </div>
@@ -219,12 +222,10 @@
         <div class="text-4xl mb-2">💎</div>
         <strong class="text-[#fbbf24] text-2xl block mb-1">Élite</strong>
         <span class="text-3xl font-bold text-white block my-3">$50 USD</span>
-        <p class="text-xs text-gray-400 mb-3">Pago único anual (Bs. equivalente)</p>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual</p>
         <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
           <li>✅ Todo lo del Avanzado</li>
           <li>✅ Carrusel 3D (12 fotos)</li>
-          <li>✅ Primera posición</li>
-          <li>🎟️ 4 tickets Ruleta</li>
         </ul>
         <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
       </div>
@@ -241,10 +242,9 @@
     </div>
     <div class="bg-black/40 p-5 rounded-xl mb-4">
       <h3 class="text-xl font-bold text-[#fbbf24] mb-3">🎟️ Compra tus tickets</h3>
-      <p class="text-gray-300 mb-2">Cada ticket vale <strong class="text-[#fbbf24]">$2 USD</strong> (Bs. al cambio del día).</p>
-      <p class="text-gray-300 mb-2">Entre más tickets, más oportunidades de ganar.</p>
+      <p class="text-gray-300 mb-2">Cada ticket vale <strong class="text-[#fbbf24]">$2 USD</strong> (Bs. al cambio).</p>
       <p class="text-sm text-gray-400 mb-4">💗 Todo el dinero de tickets construye comedores sociales.</p>
-      <a href="https://api.whatsapp.com/send?phone=584244259543&text=Hola%2C%20quiero%20comprar%20tickets%20para%20la%20Ruleta%20del%20Pulpo" target="_blank" class="btn btn-wsp py-3 px-6">🎟️ Comprar tickets por WhatsApp</a>
+      <a href="https://api.whatsapp.com/send?phone=584244259543&text=Hola%2C%20quiero%20comprar%20tickets%20para%20la%20Ruleta" target="_blank" class="btn btn-wsp py-3 px-6">🎟️ Comprar tickets por WhatsApp</a>
     </div>
   </div>
 
@@ -279,10 +279,50 @@
 </div>
 
 <script>
+const API = 'https://guia-digital-api.ngegestion.workers.dev/';
+
+// Cargar Negocios
+async function cargarNegocios() {
+  try {
+    const res = await fetch(API + '?accion=listar-tarjetas');
+    const data = await res.json();
+    const negocios = data.data || [];
+    
+    const contenedor = document.getElementById('lista-negocios');
+    
+    if (negocios.length === 0) {
+      contenedor.innerHTML = '<div class="text-center text-gray-400 col-span-2 py-8">Aún no hay negocios registrados. ¡Sé el primero!</div>';
+      return;
+    }
+
+    contenedor.innerHTML = negocios.map(n => `
+      <div class="taller-card">
+        <h3 class="text-xl font-bold text-[#fbbf24]">${n.negocio || n.nombre}</h3>
+        <p class="text-sm text-gray-300 mb-3">${n.descripcion || 'Sin descripción'}</p>
+        <div class="flex gap-3 flex-wrap">
+          <a href="tarjeta.html?slug=${n.slug}" class="btn btn-sitio" target="_blank">👁️ Ver Tarjeta</a>
+          ${n.telefono ? `<a href="https://wa.me/57${n.telefono.replace(/\\D/g,'')}" class="btn btn-wsp" target="_blank">💬 WhatsApp</a>` : ''}
+        </div>
+      </div>
+    `).join('');
+  } catch (err) {
+    document.getElementById('lista-negocios').innerHTML = '<div class="text-center text-red-400 col-span-2 py-8">Error al cargar los negocios.</div>';
+  }
+}
+
+// Lógica del pulpito
+document.getElementById('pulpitoImg')?.addEventListener('click', function() {
+  const mensaje = "Hola, soy el pulpo de Mayorista Tocuyito. Servimos, no competimos.";
+  const voz = new SpeechSynthesisUtterance(mensaje);
+  voz.lang = 'es-VE';
+  window.speechSynthesis.speak(voz);
+});
+
+// Compartir
 function compartirSitio() {
   const url = 'https://mayoristatocuyito.guia-digital.com';
   if (navigator.share) {
-    navigator.share({ title: 'Mayorista Tocuyito', text: '¡Visita nuestra página! Encuentra los mejores precios en plátanos y víveres.', url: url });
+    navigator.share({ title: 'Mayorista Tocuyito', text: '¡Visita nuestra página!', url: url });
   } else {
     navigator.clipboard.writeText(url);
     alert('📋 Enlace copiado.');
@@ -296,12 +336,8 @@ document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => {
   el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
 });
 
-document.getElementById('pulpitoImg')?.addEventListener('click', function() {
-  const mensaje = "Hola, soy el pulpo de Mayorista Tocuyito. Servimos, no competimos.";
-  const voz = new SpeechSynthesisUtterance(mensaje);
-  voz.lang = 'es-VE';
-  window.speechSynthesis.speak(voz);
-});
+// Ejecutar al cargar
+document.addEventListener('DOMContentLoaded', cargarNegocios);
 </script>
 
 </body>
