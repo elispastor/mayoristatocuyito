@@ -116,6 +116,7 @@
   <div class="menu-desktop">
     <a href="#inicio">INICIO</a>
     <a href="#directorio">DIRECTORIO</a>
+    <a href="#empleo">EMPLEO</a>
     <a href="#comedor">COMEDOR</a>
     <a href="#planes">PLANES</a>
     <a href="#ruleta">RULETA</a>
@@ -129,6 +130,7 @@
 <div id="mobile-menu">
   <a href="#inicio">INICIO</a>
   <a href="#directorio">DIRECTORIO</a>
+  <a href="#empleo">EMPLEO</a>
   <a href="#comedor">COMEDOR</a>
   <a href="#planes">PLANES</a>
   <a href="#ruleta">RULETA</a>
@@ -176,6 +178,60 @@
     <h2 class="text-2xl md:text-3xl font-bold text-[#fbbf24] mb-4 text-center">📋 DIRECTORIO DE NEGOCIOS</h2>
     <div id="lista-negocios" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
       <div class="text-center text-gray-400 col-span-1 md:col-span-2 py-8">Cargando negocios...</div>
+    </div>
+  </div>
+
+  <!-- BOLSA DE EMPLEO DEL MAYORISTA -->
+  <div id="empleo" class="card mb-6">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#34B7F1] text-center mb-2">💼 BOLSA DE EMPLEO DEL MAYORISTA</h2>
+    <p class="text-center text-gray-300 mb-6 text-sm md:text-base">Conectamos a los dueños de los puestos con gente lista para trabajar.</p>
+    
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Para los que buscan trabajo -->
+      <div class="bg-black/30 p-5 rounded-xl text-center border border-blue-500/30">
+        <i class="fas fa-user-tie text-5xl text-blue-400 mb-3"></i>
+        <h3 class="text-xl font-bold text-white mb-2">¿BUSCAS TRABAJO?</h3>
+        <p class="text-sm text-gray-300 mb-4">Deja tus datos para que los dueños de los negocios del mayorista te contacten.</p>
+        <button onclick="abrirFormulario('empleo')" class="btn btn-sitio w-full py-2 text-sm">📢 Publicar mi perfil</button>
+      </div>
+      
+      <!-- Para los que buscan empleados -->
+      <div class="bg-black/30 p-5 rounded-xl text-center border border-purple-500/30">
+        <i class="fas fa-store text-5xl text-purple-400 mb-3"></i>
+        <h3 class="text-xl font-bold text-white mb-2">¿BUSCAS EMPLEADO?</h3>
+        <p class="text-sm text-gray-300 mb-4">Publica tu vacante y encuentra ayudantes, cajeros o cargadores.</p>
+        <button onclick="abrirFormulario('vacante')" class="btn btn-wsp w-full py-2 text-sm">🚀 Publicar vacante</button>
+      </div>
+    </div>
+
+    <!-- Formulario Busco Empleo (Oculto) -->
+    <div id="formEmpleo" class="hidden mt-6 p-5 bg-black/40 rounded-xl border border-blue-500/30">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-bold text-blue-400">📋 Deja tu perfil de trabajo</h3>
+        <button onclick="cerrarFormulario('empleo')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+      </div>
+      <form onsubmit="enviarFormulario(event, 'empleo')">
+        <input type="text" name="nombre" placeholder="Tu nombre completo" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2">
+        <input type="tel" name="telefono" placeholder="Tu WhatsApp" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2">
+        <input type="text" name="oficio" placeholder="¿Qué sabes hacer? (Cargador, cajero, ayudante)" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2">
+        <textarea name="experiencia" placeholder="Cuéntanos un poco de tu experiencia" rows="2" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2"></textarea>
+        <button type="submit" class="btn btn-sitio w-full py-3">📤 Enviar a los dueños</button>
+      </form>
+    </div>
+
+    <!-- Formulario Busco Empleado (Oculto) -->
+    <div id="formVacante" class="hidden mt-6 p-5 bg-black/40 rounded-xl border border-purple-500/30">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-bold text-purple-400">💼 Publica tu vacante</h3>
+        <button onclick="cerrarFormulario('vacante')" class="text-white bg-red-600/50 hover:bg-red-600 px-3 py-1 rounded-full text-sm">✕ Cerrar</button>
+      </div>
+      <form onsubmit="enviarFormulario(event, 'vacante')">
+        <input type="text" name="negocio" placeholder="Nombre de tu negocio o puesto" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2">
+        <input type="tel" name="telefono" placeholder="Tu WhatsApp" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2">
+        <input type="text" name="puesto" placeholder="¿Qué puesto necesitas? (Ayudante, cajero, cargador)" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2">
+        <textarea name="requisitos" placeholder="Requisitos del puesto" rows="2" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white mb-2"></textarea>
+        <button type="submit" class="btn btn-wsp w-full py-3">📤 Publicar vacante</button>
+      </form>
     </div>
   </div>
 
@@ -295,29 +351,25 @@ async function cargarNegocios() {
     const res = await fetch(API + '?accion=listar-tarjetas');
     const data = await res.json();
     
-    // 1. Filtramos solo los negocios de Tocuyito
     const todosLosNegocios = data.data || [];
     const negociosTocuyito = todosLosNegocios.filter(n => 
       (n.ciudad && n.ciudad.toLowerCase().includes('tocuyito')) || 
-      (n.negocio && n.negocio.toLowerCase().includes('jbl')) // Filtro extra por si acaso
+      (n.negocio && n.negocio.toLowerCase().includes('jbl')) 
     );
 
     const contenedor = document.getElementById('lista-negocios');
     
-    // Si no hay negocios de Tocuyito, mostramos el mensaje
     if (negociosTocuyito.length === 0) {
       contenedor.innerHTML = '<div class="text-center text-gray-400 col-span-1 md:col-span-2 py-8">Aún no hay negocios registrados en Tocuyito. ¡Sé el primero!</div>';
       return;
     }
 
-    // 2. Ordenamos para que el Panda (Lunchería JBL) salga primero
     negociosTocuyito.sort((a, b) => {
       const aEsPanda = (a.negocio || '').toLowerCase().includes('jbl') ? 1 : 0;
       const bEsPanda = (b.negocio || '').toLowerCase().includes('jbl') ? 1 : 0;
-      return bEsPanda - aEsPanda; // El que sea panda va primero
+      return bEsPanda - aEsPanda; 
     });
 
-    // 3. Mostramos las tarjetas
     contenedor.innerHTML = negociosTocuyito.map(n => `
       <div class="taller-card">
         <h3 class="text-lg md:text-xl font-bold text-[#fbbf24]">${n.negocio || n.nombre}</h3>
@@ -331,6 +383,43 @@ async function cargarNegocios() {
   } catch (err) {
     document.getElementById('lista-negocios').innerHTML = '<div class="text-center text-red-400 col-span-1 md:col-span-2 py-8">Error al cargar los negocios: ' + err.message + '</div>';
   }
+}
+
+function abrirFormulario(tipo) {
+  document.getElementById('formEmpleo').classList.add('hidden');
+  document.getElementById('formVacante').classList.add('hidden');
+  
+  if (tipo === 'empleo') {
+    document.getElementById('formEmpleo').classList.remove('hidden');
+    document.getElementById('formEmpleo').scrollIntoView({ behavior: 'smooth' });
+  } else if (tipo === 'vacante') {
+    document.getElementById('formVacante').classList.remove('hidden');
+    document.getElementById('formVacante').scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function cerrarFormulario(tipo) {
+  if (tipo === 'empleo') document.getElementById('formEmpleo').classList.add('hidden');
+  if (tipo === 'vacante') document.getElementById('formVacante').classList.add('hidden');
+}
+
+function enviarFormulario(e, tipo) {
+  e.preventDefault();
+  const form = e.target;
+  const datos = new FormData(form);
+  let texto = '';
+  
+  if (tipo === 'empleo') {
+    texto = `💼 BUSCO EMPLEO EN EL MAYORISTA\n\nNombre: ${datos.get('nombre')}\nTeléfono: ${datos.get('telefono')}\nOficio: ${datos.get('oficio')}\nExperiencia: ${datos.get('experiencia') || ''}`;
+  } else if (tipo === 'vacante') {
+    texto = `🏪 OFREZCO EMPLEO EN EL MAYORISTA\n\nNegocio: ${datos.get('negocio')}\nTeléfono: ${datos.get('telefono')}\nPuesto: ${datos.get('puesto')}\nRequisitos: ${datos.get('requisitos') || ''}`;
+  }
+  
+  const telefonoAdmin = '584244259543'; // Tu número de Tocuyito
+  window.open(`https://wa.me/${telefonoAdmin}?text=${encodeURIComponent(texto)}`, '_blank');
+  alert('✅ Solicitud enviada correctamente. El administrador se contactará contigo.');
+  form.reset();
+  cerrarFormulario(tipo);
 }
 
 document.getElementById('pulpitoImg')?.addEventListener('click', function() {
