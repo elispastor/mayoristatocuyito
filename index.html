@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Mayorista Tocuyito | Guía Digital</title>
+<meta name="description" content="Mayorista Tocuyito - Venta de plátanos y víveres al mayor. Ecosistema Digital Inteligente.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: #0b1c3a; font-family: 'Segoe UI', Arial, sans-serif; color: white; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+  .navbar {
+    position: sticky; top: 0; z-index: 9999;
+    background: rgba(17, 43, 79, 0.95);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border-bottom: 4px solid #fbbf24;
+    padding: 15px 25px; margin-bottom: 30px;
+    border-radius: 0 0 20px 20px;
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .navbar .brand { display: flex; flex-direction: column; }
+  .navbar .brand .title { color: white; font-size: 1.4rem; font-weight: bold; letter-spacing: 1px; }
+  .navbar .brand .city { color: #fbbf24; font-size: 0.75rem; font-weight: 600; margin-top: -2px; }
+  .navbar .menu-desktop { display: flex; gap: 18px; font-size: 0.85rem; font-weight: 600; align-items: center; }
+  .navbar .menu-desktop a, .navbar .menu-desktop button {
+    color: white; text-decoration: none; background: none; border: none; cursor: pointer;
+    font-family: inherit; font-size: 0.85rem; font-weight: 600; transition: color 0.2s;
+  }
+  .navbar .menu-desktop a:hover, .navbar .menu-desktop button:hover { color: #fbbf24; }
+  .navbar .btn-tarjeta-nav {
+    background: #fbbf24; color: #0b1c3a !important; padding: 8px 16px; border-radius: 30px;
+    font-weight: bold !important;
+  }
+  .navbar .menu-mobile-btn { display: none; background: none; border: none; color: #fbbf24; font-size: 1.5rem; cursor: pointer; }
+  #mobile-menu {
+    display: none; background: rgba(17, 43, 79, 0.98); backdrop-filter: blur(10px);
+    padding: 15px; margin-bottom: 20px; border-radius: 15px; border-left: 4px solid #fbbf24;
+  }
+  #mobile-menu.open { display: flex; flex-direction: column; gap: 12px; }
+  #mobile-menu a, #mobile-menu button {
+    color: white; text-decoration: none; padding: 10px; border-radius: 8px;
+    background: none; border: none; cursor: pointer; text-align: left;
+    font-family: inherit; font-size: 1rem; font-weight: 600;
+  }
+  #mobile-menu a:hover, #mobile-menu button:hover { background: rgba(251,191,36,0.15); color: #fbbf24; }
+  @media (max-width: 900px) {
+    .navbar .menu-desktop { display: none; }
+    .navbar .menu-mobile-btn { display: block; }
+  }
+  @media (max-width: 768px) { .container { padding: 12px; } }
+
+  .card { background: #112b4f; padding: 25px; border-radius: 20px; border-left: 5px solid #fbbf24; margin-bottom: 20px; }
+  .btn { padding: 10px 20px; border-radius: 30px; font-weight: bold; display: inline-block; font-size: 0.9rem; transition: 0.2s; text-align: center; text-decoration: none; cursor: pointer; border: none; }
+  .btn-wsp { background: #25d366; color: white; }
+  .btn-sitio { background: #3b82f6; color: white; }
+  .btn-oro { background: #fbbf24; color: #0b1c3a; }
+  .btn:hover { transform: scale(1.05); }
+  .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2em; text-decoration: none; color: white; border: 2px solid #fbbf24; z-index: 1000; }
+
+  .plan-card {
+    background: rgba(0,0,0,0.35); padding: 20px; border-radius: 20px;
+    text-align: center; transition: 0.3s; position: relative;
+  }
+  .plan-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(251,191,36,0.3); }
+  .plan-basico { border: 2px solid rgba(251,191,36,0.3); }
+  .plan-pro { border: 2px solid rgba(251,191,36,0.6); }
+  .plan-avanzado { border: 2px solid #fbbf24; }
+  .plan-elite { border: 3px solid #fbbf24; background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(0,0,0,0.5)); }
+  .plan-elite::before {
+    content: "⭐ MÁS POPULAR";
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: #fbbf24; color: #0b1c3a; padding: 4px 12px; border-radius: 20px;
+    font-size: 0.7rem; font-weight: bold;
+  }
+
+  .premio-item { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 15px; text-align: center; border: 2px solid rgba(251,191,36,0.4); }
+
+  .comedor-card {
+    background: linear-gradient(135deg, rgba(251,191,36,0.2), rgba(11,28,58,0.9));
+    border: 2px solid #fbbf24; border-radius: 20px; padding: 30px; text-align: center;
+  }
+  @keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float { animation: flotar 3s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<a href="https://api.whatsapp.com/send?phone=584244259543" class="whatsapp-float" target="_blank">💬</a>
+
+<nav class="navbar">
+  <div class="brand">
+    <div class="title">MAYORISTA TOCUYITO</div>
+    <div class="city">Plátanos y Víveres</div>
+  </div>
+  <div class="menu-desktop">
+    <a href="#inicio">INICIO</a>
+    <a href="#comedor">COMEDOR</a>
+    <a href="#planes">PLANES</a>
+    <a href="#ruleta">RULETA</a>
+    <a href="#contacto">CONTACTO</a>
+    <button onclick="compartirSitio()">📤 COMPARTIR</button>
+    <a href="registro.html" class="btn-tarjeta-nav">📝 CREAR TARJETA</a>
+  </div>
+  <button class="menu-mobile-btn" id="menu-btn">☰</button>
+</nav>
+
+<div id="mobile-menu">
+  <a href="#inicio">INICIO</a>
+  <a href="#comedor">COMEDOR</a>
+  <a href="#planes">PLANES</a>
+  <a href="#ruleta">RULETA</a>
+  <a href="#contacto">CONTACTO</a>
+  <button onclick="compartirSitio()">📤 COMPARTIR</button>
+  <a href="registro.html" style="background:#fbbf24; color:#0b1c3a; text-align:center; font-weight:bold;">📝 CREAR MI TARJETA</a>
+</div>
+
+<div class="container">
+
+  <div id="inicio" class="text-center my-6">
+    <img src="portada-guia-cucuta.png" id="portadaImg" alt="Mayorista Tocuyito" class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl" style="cursor:pointer" onerror="this.src='https://placehold.co/1200x400/0b1c3a/fbbf24?text=Mayorista+Tocuyito'">
+    <div class="mt-4 text-[#fbbf24] text-lg md:text-xl font-semibold italic tracking-wide">
+      CONEXIÓN TOTAL
+    </div>
+    <div class="text-center my-4 px-4">
+      <p class="text-2xl md:text-3xl font-bold italic text-[#fbbf24] drop-shadow-lg">
+        "Servimos, no competimos"
+      </p>
+      <p class="text-sm text-gray-300 mt-2">⭐ Bienvenid@s a Mayorista Tocuyito - Venta al Mayor</p>
+    </div>
+  </div>
+
+  <div class="text-center my-8 px-4">
+    <h2 class="text-3xl md:text-4xl font-bold italic text-white drop-shadow-lg">
+      Plátanos, Víveres y más al Mayor
+    </h2>
+  </div>
+
+  <div class="text-center my-6">
+    <a href="registro.html" class="btn btn-oro" style="padding: 18px 45px; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(251,191,36,0.4);">
+      📝 CREAR MI TARJETA DIGITAL
+    </a>
+    <p class="text-xs text-gray-400 mt-2">Presencia digital profesional desde $5.90 USD (25.000 COP / Bs.)</p>
+  </div>
+
+  <div class="text-center my-6" id="pulpitoContainer">
+    <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" class="w-56 h-56 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float" onerror="this.style.display='none'">
+    <div id="mensajePulpito" class="mt-3 text-white text-lg md:text-xl font-semibold"></div>
+    <p class="text-xs text-gray-400 mt-1">✨ Haz clic en el pulpito para saludar ✨</p>
+  </div>
+
+  <div id="comedor" class="card mb-6">
+    <div class="comedor-card">
+      <div class="text-5xl mb-3">🍲</div>
+      <h2 class="text-3xl font-bold text-[#fbbf24] mb-3">CONSTRUIMOS COMEDORES SOCIALES</h2>
+      <p class="text-lg text-white mb-4">
+        Cada ticket que compras construye un comedor para los que más lo necesitan.
+      </p>
+      <a href="#ruleta" class="btn btn-oro py-3 px-8 text-lg" style="display:inline-block;">🎟️ Comprar tickets</a>
+    </div>
+  </div>
+
+  <div id="planes" class="card mb-6">
+    <h2 class="text-3xl font-bold text-[#fbbf24] text-center mb-6">💎 PLANES PARA TU NEGOCIO</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="plan-card plan-basico">
+        <div class="text-4xl mb-2">🥉</div>
+        <strong class="text-[#fbbf24] text-2xl block mb-1">Básico</strong>
+        <span class="text-3xl font-bold text-white block my-3">$5.90 USD</span>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual (~25.000 COP / Bs.)</p>
+        <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
+          <li>✅ Tarjeta digital con QR</li>
+          <li>✅ Link único</li>
+          <li>✅ Presencia en la guía</li>
+          <li>🎟️ 1 ticket Ruleta</li>
+        </ul>
+        <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
+      </div>
+      <div class="plan-card plan-pro">
+        <div class="text-4xl mb-2">🥈</div>
+        <strong class="text-[#fbbf24] text-2xl block mb-1">Pro</strong>
+        <span class="text-3xl font-bold text-white block my-3">$15 USD</span>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual (Bs. equivalente)</p>
+        <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
+          <li>✅ Todo lo del Básico</li>
+          <li>✅ Carrusel 3D (3 fotos)</li>
+          <li>✅ Diseño personalizado</li>
+          <li>🎟️ 2 tickets Ruleta</li>
+        </ul>
+        <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
+      </div>
+      <div class="plan-card plan-avanzado">
+        <div class="text-4xl mb-2">🥇</div>
+        <strong class="text-[#fbbf24] text-2xl block mb-1">Avanzado</strong>
+        <span class="text-3xl font-bold text-white block my-3">$30 USD</span>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual (Bs. equivalente)</p>
+        <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
+          <li>✅ Todo lo del Pro</li>
+          <li>✅ Carrusel 3D (6 fotos)</li>
+          <li>✅ Prioridad alta</li>
+          <li>🎟️ 3 tickets Ruleta</li>
+        </ul>
+        <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
+      </div>
+      <div class="plan-card plan-elite">
+        <div class="text-4xl mb-2">💎</div>
+        <strong class="text-[#fbbf24] text-2xl block mb-1">Élite</strong>
+        <span class="text-3xl font-bold text-white block my-3">$50 USD</span>
+        <p class="text-xs text-gray-400 mb-3">Pago único anual (Bs. equivalente)</p>
+        <ul class="text-sm text-gray-200 space-y-1 mb-4 text-left">
+          <li>✅ Todo lo del Avanzado</li>
+          <li>✅ Carrusel 3D (12 fotos)</li>
+          <li>✅ Primera posición</li>
+          <li>🎟️ 4 tickets Ruleta</li>
+        </ul>
+        <a href="registro.html" class="btn btn-oro w-full py-2" style="display:block;">Quiero este plan</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ruleta" class="card mb-6">
+    <h2 class="text-3xl font-bold text-[#fbbf24] text-center mb-2">🎰 RULETA DEL PULPO BENEFACTOR</h2>
+    <p class="text-center text-gray-300 mb-6">Un solo nivel. ¡Sorteo rápido!</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+      <div class="premio-item"><div class="text-3xl mb-1">🥇</div><p class="text-xs text-gray-400">1er Premio</p><p class="text-2xl font-bold text-[#fbbf24]">$50</p></div>
+      <div class="premio-item"><div class="text-3xl mb-1">🥈</div><p class="text-xs text-gray-400">2do Premio</p><p class="text-2xl font-bold text-[#fbbf24]">$20</p></div>
+      <div class="premio-item"><div class="text-3xl mb-1">🥉</div><p class="text-xs text-gray-400">3er Premio</p><p class="text-2xl font-bold text-[#fbbf24]">$10</p></div>
+    </div>
+    <div class="bg-black/40 p-5 rounded-xl mb-4">
+      <h3 class="text-xl font-bold text-[#fbbf24] mb-3">🎟️ Compra tus tickets</h3>
+      <p class="text-gray-300 mb-2">Cada ticket vale <strong class="text-[#fbbf24]">$2 USD</strong> (Bs. al cambio del día).</p>
+      <p class="text-gray-300 mb-2">Entre más tickets, más oportunidades de ganar.</p>
+      <p class="text-sm text-gray-400 mb-4">💗 Todo el dinero de tickets construye comedores sociales.</p>
+      <a href="https://api.whatsapp.com/send?phone=584244259543&text=Hola%2C%20quiero%20comprar%20tickets%20para%20la%20Ruleta%20del%20Pulpo" target="_blank" class="btn btn-wsp py-3 px-6">🎟️ Comprar tickets por WhatsApp</a>
+    </div>
+  </div>
+
+  <div id="contacto" class="card text-center">
+    <h2 class="text-2xl font-bold text-[#fbbf24] mb-3">📲 ¿QUIERES APARECER AQUÍ?</h2>
+    <div class="flex justify-center gap-4 my-4 flex-wrap">
+      <a href="https://api.whatsapp.com/send?phone=584244259543" class="btn btn-wsp" target="_blank">📱 WhatsApp</a>
+      <a href="registro.html" class="btn btn-oro">📝 Crear mi tarjeta</a>
+      <button onclick="compartirSitio()" class="btn btn-sitio">📤 Compartir guía</button>
+    </div>
+
+    <div class="mt-6 p-5 bg-black/40 rounded-xl">
+      <h3 class="text-xl font-bold text-[#fbbf24] mb-3">💳 PAGO MÓVIL / TRANSFERENCIA</h3>
+      <div class="space-y-2 text-left max-w-md mx-auto">
+        <p class="flex justify-between"><span class="text-gray-400">Teléfono:</span> <strong>0424-4259543</strong></p>
+        <p class="flex justify-between"><span class="text-gray-400">Titular:</span> <strong>Elis Alfredo Suarez Mendez</strong></p>
+        <p class="flex justify-between"><span class="text-gray-400">Plan:</span> <strong>Desde $5.90 USD</strong></p>
+      </div>
+      <a href="https://api.whatsapp.com/send?phone=584244259543&text=Hola%2C%20quiero%20activar%20mi%20plan%20en%20Mayorista%20Tocuyito" class="btn btn-wsp py-3 px-6 mt-4" target="_blank">💬 Enviar comprobante</a>
+    </div>
+
+    <div class="mt-6">
+      <h3 class="text-[#fbbf24] mb-2">📱 ESCANEA Y GUARDA ESTA GUÍA</h3>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://mayoristatocuyito.guia-digital.com" alt="QR Mayorista" class="mx-auto my-2 rounded-xl">
+    </div>
+  </div>
+
+  <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
+    <p>© 2026 Mayorista Tocuyito · Guía Digital</p>
+    <p class="text-sm text-gray-400 mt-1">Guía Digital - Unidos Ganamos Más</p>
+  </footer>
+</div>
+
+<script>
+function compartirSitio() {
+  const url = 'https://mayoristatocuyito.guia-digital.com';
+  if (navigator.share) {
+    navigator.share({ title: 'Mayorista Tocuyito', text: 'Venta de plátanos y víveres al mayor', url: url });
+  } else {
+    navigator.clipboard.writeText(url);
+    alert('📋 Enlace copiado.');
+  }
+}
+
+document.getElementById('menu-btn')?.addEventListener('click', () => {
+  document.getElementById('mobile-menu').classList.toggle('open');
+});
+document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => {
+  el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
+});
+
+// Lógica del pulpito (si la necesitas)
+document.getElementById('pulpitoImg')?.addEventListener('click', function() {
+  const mensaje = "Hola, soy el pulpo de Mayorista Tocuyito. Servimos, no competimos.";
+  const voz = new SpeechSynthesisUtterance(mensaje);
+  voz.lang = 'es-VE';
+  window.speechSynthesis.speak(voz);
+});
+</script>
+
+</body>
+</html>
