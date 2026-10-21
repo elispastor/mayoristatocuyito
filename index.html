@@ -126,7 +126,7 @@
 <div class="container">
 
   <div id="inicio" class="text-center my-6">
-    <img src="portada-guia-cucuta.png" id="portadaImg" alt="Mayorista Tocuyito" class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl" style="cursor:pointer" onerror="this.src='https://placehold.co/1200x400/0b1c3a/fbbf24?text=Mayorista+Tocuyito'">
+    <img src="portada-mayorista.jpg" id="portadaImg" alt="Mayorista Tocuyito" class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl" style="cursor:pointer" onerror="this.src='https://placehold.co/1200x400/0b1c3a/fbbf24?text=Mayorista+Tocuyito'">
     <div class="mt-4 text-[#fbbf24] text-lg md:text-xl font-semibold italic tracking-wide">
       CONEXIÓN TOTAL
     </div>
@@ -291,7 +291,6 @@ document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => {
   el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
 });
 
-// Lógica del pulpito (si la necesitas)
 document.getElementById('pulpitoImg')?.addEventListener('click', function() {
   const mensaje = "Hola, soy el pulpo de Mayorista Tocuyito. Servimos, no competimos.";
   const voz = new SpeechSynthesisUtterance(mensaje);
