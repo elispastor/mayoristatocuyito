@@ -13,7 +13,6 @@
   body { background: #0b1c3a; font-family: 'Segoe UI', Arial, sans-serif; color: white; }
   .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-  /* NAVBAR RESPONSIVO */
   .navbar {
     position: sticky; top: 0; z-index: 9999;
     background: rgba(17, 43, 79, 0.95);
@@ -49,8 +48,6 @@
     font-family: inherit; font-size: 1rem; font-weight: 600;
   }
   #mobile-menu a:hover, #mobile-menu button:hover { background: rgba(251,191,36,0.15); color: #fbbf24; }
-  
-  /* MEDIA QUERIES PARA MÓVIL */
   @media (max-width: 900px) {
     .navbar .menu-desktop { display: none; }
     .navbar .menu-mobile-btn { display: block; }
@@ -103,7 +100,6 @@
   }
   .animate-float { animation: flotar 3s ease-in-out infinite; }
 
-  /* AJUSTES PARA IMÁGENES Y TEXTOS */
   img { max-width: 100%; height: auto; }
   .portada-img { width: 100%; max-width: 800px; margin: 0 auto; display: block; }
 </style>
@@ -298,17 +294,31 @@ async function cargarNegocios() {
   try {
     const res = await fetch(API + '?accion=listar-tarjetas');
     const data = await res.json();
-    // LA CLAVE ESTÁ AQUÍ: La API devuelve los datos en "data.data"
-    const negocios = data.data || []; 
     
+    // 1. Filtramos solo los negocios de Tocuyito
+    const todosLosNegocios = data.data || [];
+    const negociosTocuyito = todosLosNegocios.filter(n => 
+      (n.ciudad && n.ciudad.toLowerCase().includes('tocuyito')) || 
+      (n.negocio && n.negocio.toLowerCase().includes('jbl')) // Filtro extra por si acaso
+    );
+
     const contenedor = document.getElementById('lista-negocios');
     
-    if (negocios.length === 0) {
-      contenedor.innerHTML = '<div class="text-center text-gray-400 col-span-1 md:col-span-2 py-8">Aún no hay negocios registrados. ¡Sé el primero!</div>';
+    // Si no hay negocios de Tocuyito, mostramos el mensaje
+    if (negociosTocuyito.length === 0) {
+      contenedor.innerHTML = '<div class="text-center text-gray-400 col-span-1 md:col-span-2 py-8">Aún no hay negocios registrados en Tocuyito. ¡Sé el primero!</div>';
       return;
     }
 
-    contenedor.innerHTML = negocios.map(n => `
+    // 2. Ordenamos para que el Panda (Lunchería JBL) salga primero
+    negociosTocuyito.sort((a, b) => {
+      const aEsPanda = (a.negocio || '').toLowerCase().includes('jbl') ? 1 : 0;
+      const bEsPanda = (b.negocio || '').toLowerCase().includes('jbl') ? 1 : 0;
+      return bEsPanda - aEsPanda; // El que sea panda va primero
+    });
+
+    // 3. Mostramos las tarjetas
+    contenedor.innerHTML = negociosTocuyito.map(n => `
       <div class="taller-card">
         <h3 class="text-lg md:text-xl font-bold text-[#fbbf24]">${n.negocio || n.nombre}</h3>
         <p class="text-sm text-gray-300 mb-3">${n.descripcion || 'Sin descripción'}</p>
@@ -347,7 +357,6 @@ document.querySelectorAll('#mobile-menu a, #mobile-menu button').forEach(el => {
   el.addEventListener('click', () => document.getElementById('mobile-menu').classList.remove('open'));
 });
 
-// Ejecutar al cargar
 document.addEventListener('DOMContentLoaded', cargarNegocios);
 </script>
 
