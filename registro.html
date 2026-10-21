@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registro - Guía Digital Cúcuta</title>
+<title>Registro - Mayorista Tocuyito</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; }
@@ -37,8 +37,6 @@
   .plan-card { background: #f8fafc; border-radius: 16px; padding: 14px; border: 2px solid #e0e8ee; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
   .plan-card:hover { transform: scale(1.02); }
   .plan-card.seleccionado { border-color: #fbbf24; background: #fef3c7; }
-  .plan-card.proximamente { opacity: 0.6; cursor: not-allowed; position: relative; }
-  .plan-card.proximamente::before { content: "🔜 PRÓXIMAMENTE"; position: absolute; top: 8px; left: 50%; transform: translateX(-50%); background: #6b7f93; color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 700; }
   .plan-card .emoji { font-size: 28px; margin-bottom: 4px; }
   .plan-card .nombre { font-size: 13px; font-weight: 700; color: #0b1a2e; }
   .plan-card .precio { font-size: 18px; font-weight: 800; color: #1a4b6d; margin: 4px 0; }
@@ -75,7 +73,7 @@
   <div class="header">
     <div class="brand">
       <h2>GUÍA <span>DIGITAL</span></h2>
-      <small>CÚCUTA - COLOMBIA</small>
+      <small>TOCUYITO - CARABOBO</small>
     </div>
     <button class="menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
   </div>
@@ -96,19 +94,18 @@
   <div class="portada" id="inicio">
     <div class="icon"><i class="fas fa-id-card"></i></div>
     <h1>GUÍA <span>DIGITAL</span></h1>
-    <div class="sub">TOCUYITO-CARABOBO-VENEZUELA · TODOS SOMOS SOCIOS</div>
+    <div class="sub">MAYORISTA TOCUYITO · TODOS SOMOS SOCIOS</div>
   </div>
 
   <div class="beneficios" id="beneficios">
     <h3><i class="fas fa-star"></i> ¿Qué ganas con tu tarjeta?</h3>
     <ul>
-      <li><i class="fas fa-check-circle"></i> Apareces en la Guía Digital de Cúcuta</li>
+      <li><i class="fas fa-check-circle"></i> Apareces en la Guía Digital de Mayorista Tocuyito</li>
       <li><i class="fas fa-check-circle"></i> Tu propia tarjeta digital con código QR</li>
-      <li><i class="fas fa-check-circle"></i> Participas en la ruleta mensual de premios</li>
+      <li><i class="fas fa-check-circle"></i> Participas en la ruleta del Pulpo Benefactor</li>
       <li><i class="fas fa-check-circle"></i> Ganas comisión por cada persona que llegue con tu link</li>
       <li><i class="fas fa-check-circle"></i> Presencia digital para tu negocio o servicio</li>
       <li><i class="fas fa-check-circle"></i> Ayudas a construir comedores sociales</li>
-      <li><i class="fas fa-check-circle"></i> Todos somos socios, todos ganamos</li>
     </ul>
   </div>
 
@@ -116,38 +113,38 @@
     <i class="fas fa-tag" style="color:#fbbf24;"></i> Elige tu plan
   </h3>
   <div class="planes-grid" id="planesGrid">
-    <div class="plan-card" data-plan="Básico" data-precio="25000">
+    <div class="plan-card" data-plan="Básico" data-precio="5.90">
       <div class="emoji">🥉</div>
       <div class="nombre">Básico</div>
-      <div class="precio">$5.90</div>
+      <div class="precio">$5.90 USD</div>
       <div class="detalle">1 foto + QR + comisión 20%</div>
     </div>
-    <div class="plan-card" data-plan="Pro" data-precio="50000">
+    <div class="plan-card" data-plan="Pro" data-precio="15">
       <div class="emoji">🥈</div>
       <div class="nombre">Pro</div>
-      <div class="precio">$15</div>
+      <div class="precio">$15 USD</div>
       <div class="detalle">Carrusel 6 fotos + comisión 30%</div>
     </div>
-    <div class="plan-card proximamente" data-plan="Avanzado" data-precio="100000">
+    <div class="plan-card" data-plan="Avanzado" data-precio="30">
       <div class="emoji">🥇</div>
       <div class="nombre">Avanzado</div>
-      <div class="precio">$30</div>
+      <div class="precio">$30 USD</div>
       <div class="detalle">Carrusel 6 fotos + comisión 40%</div>
     </div>
-    <div class="plan-card proximamente" data-plan="Élite" data-precio="200000">
+    <div class="plan-card" data-plan="Élite" data-precio="50">
       <div class="emoji">💎</div>
       <div class="nombre">Élite</div>
-      <div class="precio">$50</div>
+      <div class="precio">$50 USD</div>
       <div class="detalle">Carrusel 12 fotos + comisión 50%</div>
     </div>
   </div>
 
   <div class="pago-box" id="pago">
-    <h3><i class="fas fa-credit-card"></i> Pago por Nequi</h3>
-    <div class="dato-pago"><span>Nequi</span><span>04144259543</span></div>
-    <div class="dato-pago"><span>Titular</span><span>Elis Pastor Suarez Teran</span></div>
-    <div class="dato-pago"><span>Monto</span><span id="montoPago">$5.90 COP</span></div>
-    <a href="https://wa.me/584227159158?text=Hola%2C%20quiero%20mi%20tarjeta%20de%20la%20Gu%C3%ADa%20Digital%20C%C3%BAcuta" class="btn-pago" target="_blank"><i class="fab fa-whatsapp"></i> Enviar comprobante por WhatsApp</a>
+    <h3><i class="fas fa-credit-card"></i> Pago Móvil / Transferencia</h3>
+    <div class="dato-pago"><span>Teléfono</span><span>0424-4259543</span></div>
+    <div class="dato-pago"><span>Titular</span><span>Elis Alfredo Suarez Mendez</span></div>
+    <div class="dato-pago"><span>Monto</span><span id="montoPago">$5.90 USD</span></div>
+    <a href="https://wa.me/584244259543?text=Hola%2C%20quiero%20mi%20tarjeta%20de%20Mayorista%20Tocuyito" class="btn-pago" target="_blank"><i class="fab fa-whatsapp"></i> Enviar comprobante por WhatsApp</a>
   </div>
 
   <div class="ref-box" id="refBox" style="display:none;">
@@ -169,22 +166,17 @@
 
     <div class="form-group">
       <label>Teléfono / WhatsApp <span class="req">*</span></label>
-      <input type="tel" id="telefono" placeholder="Ej: 3001234567" required>
+      <input type="tel" id="telefono" placeholder="Ej: 04241234567" required>
     </div>
 
     <div class="form-group">
       <label>Negocio o servicio que ofrece</label>
-      <input type="text" id="negocio" placeholder="Ej: Polarizados, Electricidad, Motorizado">
+      <input type="text" id="negocio" placeholder="Ej: Venta de plátanos, Víveres">
     </div>
 
     <div class="form-group">
       <label>Ciudad</label>
-      <input type="text" id="ciudad" placeholder="Ej: Cúcuta" value="Cúcuta">
-    </div>
-
-    <div class="form-group">
-      <label>Ruta / Línea (solo motorizados)</label>
-      <input type="text" id="ruta" placeholder="Ej: Ruta 5 - Centro">
+      <input type="text" id="ciudad" placeholder="Ej: Tocuyito" value="Tocuyito">
     </div>
 
     <div class="form-group">
@@ -204,7 +196,8 @@
 
     <div id="carruselBox">
       <h4>📸 Fotos para tu carrusel (Plan Pro)</h4>
-Sube hasta 10 fotos para mostrar tu negocio.      <input type="file" id="carrusel" accept="image/*" multiple>
+      <p>Sube hasta 10 fotos para mostrar tu negocio.</p>
+      <input type="file" id="carrusel" accept="image/*" multiple>
     </div>
 
     <button type="submit" class="btn-generar"><i class="fas fa-rocket"></i> Generar mi tarjeta</button>
@@ -230,20 +223,19 @@ document.getElementById('menuBeneficios').addEventListener('click', () => { docu
 document.getElementById('menuPrecio').addEventListener('click', () => { document.getElementById('precio').scrollIntoView({ behavior: 'smooth' }); menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); });
 document.getElementById('menuPago').addEventListener('click', () => { document.getElementById('pago').scrollIntoView({ behavior: 'smooth' }); menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); });
 document.getElementById('menuRegistro').addEventListener('click', () => { document.getElementById('formRegistro').scrollIntoView({ behavior: 'smooth' }); menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); });
-document.getElementById('menuContacto').addEventListener('click', () => { window.location.href = 'https://wa.me/584227159158'; menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); });
+document.getElementById('menuContacto').addEventListener('click', () => { window.location.href = 'https://wa.me/584244259543'; menuPanel.classList.remove('open'); menuOverlay.classList.remove('active'); });
 
 // ===== SELECCIÓN DE PLAN =====
 let planActual = '';
 let precioActual = '';
 document.querySelectorAll('.plan-card').forEach(card => {
   card.addEventListener('click', () => {
-    if (card.classList.contains('proximamente')) { alert('🔜 Este plan estará disponible próximamente.'); return; }
     document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('seleccionado'));
     card.classList.add('seleccionado');
     planActual = card.dataset.plan;
     precioActual = card.dataset.precio;
-    document.getElementById('planSeleccionado').value = planActual + ' — $' + Number(precioActual).toLocaleString('es-CO') + ' COP';
-    document.getElementById('montoPago').textContent = '$' + Number(precioActual).toLocaleString('es-CO') + ' COP';
+    document.getElementById('planSeleccionado').value = planActual + ' — $' + precioActual + ' USD';
+    document.getElementById('montoPago').textContent = '$' + precioActual + ' USD';
     const carruselBox = document.getElementById('carruselBox');
     if (planActual === 'Pro') { carruselBox.style.display = 'block'; } else { carruselBox.style.display = 'none'; }
   });
@@ -288,7 +280,6 @@ async function subirFoto(file) {
   } catch (err) { return ''; }
 }
 
-// Generar código único EDI-0XX
 async function generarCodigo() {
   try {
     const res = await fetch(API_URL + '?accion=contar-tarjetas');
@@ -318,14 +309,12 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
   const nombre = document.getElementById('nombre').value.trim();
   const telefono = document.getElementById('telefono').value.trim();
   const negocio = document.getElementById('negocio').value.trim();
-  const ciudad = document.getElementById('ciudad').value.trim() || 'Cúcuta';
-  const ruta = document.getElementById('ruta').value.trim();
+  const ciudad = document.getElementById('ciudad').value.trim() || 'Tocuyito';
   const direccion = document.getElementById('direccion').value.trim();
   const descripcion = document.getElementById('descripcion').value.trim();
   const fotoInput = document.getElementById('foto');
   const carruselInput = document.getElementById('carrusel');
 
-  // Slug único
   let slugBase = negocio ? generarSlug(negocio) : generarSlug(nombre);
   if (!slugBase) slugBase = 'tarjeta-' + Date.now();
   let slug = slugBase;
@@ -338,16 +327,13 @@ document.getElementById('formRegistro').addEventListener('submit', async functio
     slug = slugBase + '-' + intento;
   }
 
-  // Generar código EDI automático
   const codigoNuevo = await generarCodigo();
-
-  // Subir foto
   const fotoUrl = fotoInput.files && fotoInput.files[0] ? await subirFoto(fotoInput.files[0]) : '';
 
-  // Subir carrusel (Plan Pro)
   let carruselUrls = [];
   if (planActual === 'Pro' && carruselInput.files && carruselInput.files.length > 0) {
-const archivos = Array.from(carruselInput.files).slice(0, 10);    for (const archivo of archivos) {
+    const archivos = Array.from(carruselInput.files).slice(0, 10);
+    for (const archivo of archivos) {
       const url = await subirFoto(archivo);
       if (url) carruselUrls.push(url);
     }
@@ -360,7 +346,7 @@ const archivos = Array.from(carruselInput.files).slice(0, 10);    for (const arc
     telefono: telefono,
     negocio: negocio,
     ciudad: ciudad,
-    ruta: ruta,
+    ruta: '',
     direccion: direccion,
     descripcion: descripcion,
     foto: fotoUrl,
@@ -383,7 +369,7 @@ const archivos = Array.from(carruselInput.files).slice(0, 10);    for (const arc
     window.open('tarjeta.html?slug=' + slug, '_blank');
 
     setTimeout(() => {
-      alert('✅ Tu tarjeta ha sido creada.\n\n📌 Tu código de referido es: ' + codigoNuevo + '\n\nCompártelo con tus amigos para ganar comisiones.\n\n📌 IMPORTANTE: Para activarla en la guía, realiza el pago por Nequi al 3242828699 y envía el comprobante por WhatsApp.');
+      alert('✅ Tu tarjeta ha sido creada.\n\n📌 Tu código de referido es: ' + codigoNuevo + '\n\nCompártelo con tus amigos para ganar comisiones.\n\n📌 IMPORTANTE: Para activarla en la guía, realiza el pago por Pago Móvil al 0424-4259543 y envía el comprobante por WhatsApp.');
     }, 800);
 
   } catch (err) {
