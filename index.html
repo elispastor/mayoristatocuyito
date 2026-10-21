@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Mayorista Tocuyito | Guía Digital</title>
-<meta name="description" content="Mayorista Tocuyito - ABASTECIMIENTO al por mayor de insumos basicos de alimentacion. Ecosistema Digital Inteligente.">
+<meta name="description" content="Mayorista Tocuyito - Venta de plátanos y víveres al mayor. Ecosistema Digital Inteligente.">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
@@ -99,7 +99,7 @@
 <nav class="navbar">
   <div class="brand">
     <div class="title">MAYORISTA TOCUYITO</div>
-    <div class="city">Insumos y Víveres</div>
+    <div class="city">Abastecimiento</div>
   </div>
   <div class="menu-desktop">
     <a href="#inicio">INICIO</a>
@@ -126,6 +126,7 @@
 <div class="container">
 
   <div id="inicio" class="text-center my-6">
+    <!-- Aquí va la portada que subiste -->
     <img src="portada-mayorista.jpg" id="portadaImg" alt="Mayorista Tocuyito" class="w-full max-w-4xl mx-auto rounded-2xl shadow-2xl" style="cursor:pointer" onerror="this.src='https://placehold.co/1200x400/0b1c3a/fbbf24?text=Mayorista+Tocuyito'">
     <div class="mt-4 text-[#fbbf24] text-lg md:text-xl font-semibold italic tracking-wide">
       CONEXIÓN TOTAL
@@ -138,21 +139,26 @@
     </div>
   </div>
 
-  <div class="text-center my-8 px-4">
-    <h2 class="text-3xl md:text-4xl font-bold italic text-white drop-shadow-lg">
-      ABASTECIMIENTO al por mayor de insumos basicos de alimentacion
+  <!-- TÍTULO PRINCIPAL MÁS PEQUEÑO -->
+  <div class="text-center my-6 px-4">
+    <h2 class="text-xl md:text-2xl font-bold italic text-white drop-shadow-lg">
+      Plátanos, Víveres y más al Mayor
     </h2>
   </div>
 
-  <div class="text-center my-4">
+  <div class="text-center my-6">
     <a href="registro.html" class="btn btn-oro" style="padding: 18px 45px; font-size: 1.2rem; box-shadow: 0 10px 30px rgba(251,191,36,0.4);">
       📝 CREAR MI TARJETA DIGITAL
     </a>
     <p class="text-xs text-gray-400 mt-2">Presencia digital profesional desde $5.90 USD (25.000 COP / Bs.)</p>
   </div>
 
+  <!-- PULPITO: Si no tienes la imagen, sale el emoji. Si tienes la imagen, la puedes cambiar luego -->
   <div class="text-center my-6" id="pulpitoContainer">
-    <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" class="w-56 h-56 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float" onerror="this.style.display='none'">
+    <!-- Si tienes la imagen, descomenta la línea de abajo y borra la del emoji -->
+    <!-- <img src="pulpito.png" id="pulpitoImg" alt="Pulpito bienvenida" class="w-56 h-56 mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float" onerror="this.style.display='none'"> -->
+    <div class="text-8xl mx-auto cursor-pointer transition duration-300 hover:scale-110 animate-float" id="pulpitoImg">🐙</div>
+    
     <div id="mensajePulpito" class="mt-3 text-white text-lg md:text-xl font-semibold"></div>
     <p class="text-xs text-gray-400 mt-1">✨ Haz clic en el pulpito para saludar ✨</p>
   </div>
@@ -160,7 +166,7 @@
   <div id="comedor" class="card mb-6">
     <div class="comedor-card">
       <div class="text-5xl mb-3">🍲</div>
-      <h2 class="text-3xl font-bold text-[#fbbf24] mb-3">CON APOYO DE TODOS INAUGURAREMOS EL COMEDOR SOCIAL DEL MAYORISTA</h2>
+      <h2 class="text-3xl font-bold text-[#fbbf24] mb-3">CONSTRUIMOS COMEDORES SOCIALES</h2>
       <p class="text-lg text-white mb-4">
         Cada ticket que compras construye un comedor para los que más lo necesitan.
       </p>
@@ -255,7 +261,7 @@
       <h3 class="text-xl font-bold text-[#fbbf24] mb-3">💳 PAGO MÓVIL / TRANSFERENCIA</h3>
       <div class="space-y-2 text-left max-w-md mx-auto">
         <p class="flex justify-between"><span class="text-gray-400">Teléfono:</span> <strong>0424-4259543</strong></p>
-        <p class="flex justify-between"><span class="text-gray-400">Titular:</span> <strong>Elis Pastor Suarez</strong></p>
+        <p class="flex justify-between"><span class="text-gray-400">Titular:</span> <strong>Elis Alfredo Suarez Mendez</strong></p>
         <p class="flex justify-between"><span class="text-gray-400">Plan:</span> <strong>Desde $5.90 USD</strong></p>
       </div>
       <a href="https://api.whatsapp.com/send?phone=584244259543&text=Hola%2C%20quiero%20activar%20mi%20plan%20en%20Mayorista%20Tocuyito" class="btn btn-wsp py-3 px-6 mt-4" target="_blank">💬 Enviar comprobante</a>
@@ -268,7 +274,7 @@
   </div>
 
   <footer class="text-center py-6 border-t border-[#fbbf24] mt-8">
-    <p>© Todos los derechos reservados 2026 Mayorista Tocuyito · Guía Digital</p>
+    <p>© 2026 Mayorista Tocuyito · Guía Digital</p>
     <p class="text-sm text-gray-400 mt-1">Guía Digital - Unidos Ganamos Más</p>
   </footer>
 </div>
@@ -277,7 +283,7 @@
 function compartirSitio() {
   const url = 'https://mayoristatocuyito.guia-digital.com';
   if (navigator.share) {
-    navigator.share({ title: 'Mayorista Tocuyito', text: 'Venta de plátanos y víveres al mayor', url: url });
+    navigator.share({ title: 'Mayorista Tocuyito', text: '¡Visita nuestra página! Encuentra los mejores precios en plátanos y víveres.', url: url });
   } else {
     navigator.clipboard.writeText(url);
     alert('📋 Enlace copiado.');
